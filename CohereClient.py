@@ -16,7 +16,7 @@ for i in range(10):
         audio = recognizer.listen(source)
         try:
             print("Recognizing...")
-            text = recognizer.recognize_google(audio)
+            text = recognizer.recognize_google_cloud(audio)
             print("You said: " + text)
             response = co.chat(message=text)
             print("Bot said: " + response.text)

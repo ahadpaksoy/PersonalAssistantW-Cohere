@@ -17,7 +17,7 @@ class SpeechRecognizer:
             audio = self.recognizer.listen(source, timeout = timeout)
             try:
                 print("Recognizing...")
-                return self.recognizer.recognize_google(audio)
+                return self.recognizer.recognize_google_cloud(audio)
             except sr.UnknownValueError:
                 print("Could not understand audio")
                 return None
