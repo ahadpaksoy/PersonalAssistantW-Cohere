@@ -1,6 +1,6 @@
 # Speech Recognition with Cohere
 
-This project uses the `speech_recognition` and `pyttsx3` libraries for speech recognition and text-to-speech, and the `cohere` library for chatbot functionality.
+This project uses the `speech_recognition`, `nltk` and `pyttsx3` libraries for speech recognition, natural language processing and text-to-speech, and the `cohere` library for chatbot functionality.
 
 ## Files
 
