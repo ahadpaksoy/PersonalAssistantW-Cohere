@@ -6,10 +6,11 @@ import cohere
 import os
 import cohere_classifications
 import nlp_tagging
+import config
 
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "C:\\recognizer\\recognizer.json"
 
-co = cohere.Client('api_key')
+co = cohere.Client(config.api_key)
 
 engine = pyttsx3.init()
 def speak(text):
@@ -31,7 +32,7 @@ for i in range(10):
             text = recognizer.recognize_google_cloud(audio)
             print("You said: " + str(text))
 
-            classifier = cohere_classifications.CohereClassifier("api_key")
+            classifier = cohere_classifications.CohereClassifier(config.api_key) 
             classificication_result = classifier.cohere_classifications(text)
 
             if classificication_result[0].predictions == "set_timer":
