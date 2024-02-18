@@ -1,3 +1,18 @@
+# Description: This file contains the code for the NLP tagging of the text input.
+'''
+The extract_duration function is designed to extract the duration in hours and minutes from a given text. 
+This function is particularly useful in natural language processing tasks where you need to extract specific information from a user's input.
+
+The function starts by defining a regular expression pattern to match durations in the text. 
+The pattern is designed to match both hours and minutes, and it uses named groups (hours and minutes) to make it easier to extract these values later. 
+After defining the pattern, the function uses the search method to search the text for a match to the pattern. 
+If a match is found, the function extracts the hours and minutes from the match object using the group method and the names of the groups. 
+If the group method returns None (which means the group wasn't found in the match), the function uses a default value of 0.
+
+Finally, the function calculates the total duration in minutes by converting the hours to minutes and adding the minutes. 
+If no match is found, the function returns None.
+
+'''
 from numpy import extract
 import speech_recognition as sr
 import nltk
