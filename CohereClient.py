@@ -1,11 +1,15 @@
+from urllib import response
+from regex import W
 import speech_recognition as sr
 import pyttsx3
 import cohere
 import os
+import cohere_classifications
+import nlp_tagging
 
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "C:\\recognizer\\recognizer.json"
 
-co = cohere.Client('api_key')
+co = cohere.Client('bdayrCdV2wSe68Ovq7iPZC7V5VE7AtgaGp6iyAI7')
 
 engine = pyttsx3.init()
 def speak(text):
@@ -21,13 +25,24 @@ for i in range(10):
         recognizer.adjust_for_ambient_noise(source)
         audio = recognizer.listen(source, phrase_time_limit=30)
         try:
+            import cohere_classifications  # Import the "cohere_classifications" module
+
             print("Recognizing...")
             text = recognizer.recognize_google_cloud(audio)
             print("You said: " + str(text))
-            response = co.chat(message=str(text), temperature=0.8, chat_history=chat_history)
-            answer = response.text  # Fix: Pass text as a string argument
-            print("Bot said: " + answer)
-            speak(response.text)
+
+            classifier = cohere_classifications.CohereClassifier("bdayrCdV2wSe68Ovq7iPZC7V5VE7AtgaGp6iyAI7")
+            classificication_result = classifier.cohere_classifications(text)
+
+            if classificication_result[0].predictions == "set_timer":
+                duration = nlp_tagging.extract_duration(text)
+                speak("Timer set for " + str(duration) + " minutes")
+                answer = "Timer set for " + str(duration) + " minutes"
+            else:
+                response = co.chat(message=str(text), temperature=0.8, chat_history=chat_history)
+                answer = response.text
+                print("Bot said: " + answer)
+                speak(answer)
 
             user_message = {
                 "user_name": "User",
