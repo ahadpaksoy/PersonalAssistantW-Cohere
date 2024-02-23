@@ -1,6 +1,3 @@
-    
-import cohere
-from cohere.responses.classify import Example
 
 import cohere
 from cohere.responses.classify import Example

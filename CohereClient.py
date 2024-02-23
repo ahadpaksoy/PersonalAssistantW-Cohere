@@ -26,8 +26,6 @@ for i in range(10):
         recognizer.adjust_for_ambient_noise(source)
         audio = recognizer.listen(source, phrase_time_limit=30)
         try:
-            import cohere_classifications  # Import the "cohere_classifications" module
-
             print("Recognizing...")
             text = recognizer.recognize_google_cloud(audio)
             print("You said: " + str(text))
