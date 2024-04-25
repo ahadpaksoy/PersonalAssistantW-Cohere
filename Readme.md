@@ -1,4 +1,4 @@
-# Speech Recognition with Cohere
+# Personal Assistant with Cohere
 
 This project uses the `speech_recognition`, `nltk` and `pyttsx3` libraries for speech recognition, natural language processing and text-to-speech, and the `cohere` library for chatbot functionality.
 
